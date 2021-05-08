@@ -1,0 +1,39 @@
+- Distribuição em histograma de todas features
+- Qual a curtose
+- Qual a assimetria
+- Há outliers?
+- Moda, Média, Mediana? 
+- Médias geométrica, harmônica ou aritmética, qual faz mais sentido?
+- Os dados estão desbalanceados em classes?
+
+- Análise de dados univariável
+• Boxplot
+• Histogramas
+• Dotplot
+• Density
+
+- Análise de dados bivariável:
+• Scatterplot
+• Lineplot
+• 
+
+- Classificação, Regressão ou Agrupamento?
+
+- Regressão:
+- Utilizar LASSO, RIDGE, ElasticNet, Regularização?
+- Regularização em logística?
+- Quais métricas em regressão?
+
+- Classificação?
+- Qual métrica adequada para classificação?
+- Qual modelo utilizar para bases desbalanceadas?
+- Qual métrica utilizar para bases desbalanceadas?
+
+- Agrupamento faz sentido? 
+- Qual modelo de agrupamento utilizar? 
+- DBSCAN, Hierárquico single, linkage, complete, ou KMeans? - Qual lida melhor com outliers?
+- Métricas para agrupamento WCSS e Silhueta
+
+- Para algoritmos que utilizam distâncias:
+Estou utilizando a distância correta? Minkowski p = 1 ou p = 2?
+

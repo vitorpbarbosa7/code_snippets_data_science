@@ -1,0 +1,22 @@
+
+•Entre Random Forest e Rede Neural, qual é mais complexa para criação de sua arquitetura?
+ 
+ Da comparação entre Random Forest e Rede Neural, têm-se que a rede neural é mais complexa quanto na sua formulação, ou seja, é necessário realizar a decisão de quantas camadas e quantos neurônios haverão em cada um, além de quais funções de ativação, então o número de possibilidades é maior e consequentemente a sua implementação é mais trabalhosa devido à necessidade de criação desta arquitetura. 
+
+ Já o Random Forest pode ser implementado e testado com mais facilidade. Neste caso deve-se decidir por exemplo, qual será a profundidade máxima, qual será a função de custo utilizada para realizar os splits e quantas árvores serão treinadas.
+
+•Qual a diferença entre KMeans e KMedians?
+ 
+ O KMeans utiliza como distância a distância euclidiana, ou seja, um distância de norma L2, portanto, haverão em seus clusters os centróides. 
+
+ No KMeans (P1 - PM)^2 + (P2 - PM)^2 + ... + (PN - PM)^2 = D ; Qual PM que minimiza D? (PM é o centróide)
+
+ Já o KMedians utiliza a distância de manhatan, a qual corresponde à norma L1. 
+ No KMedians têm-se que calculamos a mediana de cada cluster ao invés do centróide.
+
+ No KMedians |P1 - PM| + |P2 - PM| + ... + |PN - PM| = D; QUal PM que miniza D? (PM é a mediana)
+
+•Precisa normalizar os dados para Regressão Logística e Rede Neural? 
+
+ É bom normalizar porque ambos utilizam métodos numéricos para ajuste dos parâmetros, portanto ao normalizar evita-se que um atributo tenha muito mais peso que outro no momento do ajuste dos parâmetros.
+  
