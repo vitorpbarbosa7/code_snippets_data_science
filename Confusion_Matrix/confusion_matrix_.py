@@ -1,8 +1,9 @@
-class matriz_confusao_():
+class matriz_confusao():
 
     import pandas as pd
     import numpy as np 
     import matplotlib.pyplot as plt
+    from sklearn.metrics import confusion_matrix
 
     def __init__(self, y_true, y_pred, multiclass):
 
@@ -51,6 +52,3 @@ class matriz_confusao_():
         print(f'Acurácia do modelo nos dados de validação: ({np.round(accuracy_score(self.y_true, self.y_pred),4)}) \n')
         print('Matriz de confusão:')
         sns.heatmap(matriz, annot=lbl, fmt='', cmap='Blues');
-                
-
-
