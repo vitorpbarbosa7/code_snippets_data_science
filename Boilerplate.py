@@ -10,11 +10,11 @@ from IPython.display import Markdown as md
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
-f():
+def f():
     pd.set_option('display.max_columns', None)
     pd.set_option('display.max_rows', None)
     
-nf():
+def nf():
     pd.set_option('display.max_columns', None)
     pd.set_option('display.max_rows', 4)
 
