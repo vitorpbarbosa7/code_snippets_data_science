@@ -10,8 +10,13 @@ from IPython.display import Markdown as md
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"
 
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', 4)
+f():
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.max_rows', None)
+    
+nf():
+    pd.set_option('display.max_columns', None)
+    pd.set_option('display.max_rows', 4)
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -26,7 +31,7 @@ def fg(w = 6, h = 4, dpi = 120):
     plt.rcParams['figure.dpi'] = dpi
 fg()
 
-import autotime
-%load_ext autoreload
-%autoreload 2
-%load_ext autotime
+# import autotime
+# %load_ext autoreload
+# %autoreload 2
+# %load_ext autotime
