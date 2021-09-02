@@ -4,28 +4,21 @@ import pandas as pd
 class ml():
 
     '''classe para pipeline de ml'''
-    def __init__(self, X, y, model, modelname = '', threshold = 0.5, test_size = 0.3):
-
-        # Commom modules 
-        import numpy as np
-        import pandas as pd 
+    def __init__(self, X_train, X_test, y_train, y_test, 
+                model, modelname = '', threshold = 0.5):
 
         # Self variables
-        self.X = X
-        self.y = y
+        self.X_train = X_train
+        self.X_test = X_test
+        self.y_train = y_train
+        self.y_test = y_test
 
-        self.test_size = test_size 
         self.model = model
         self.modelname = modelname
         self.threshold = threshold
         
-        # Chamou o modelo ele já faz split e fit
-        self.split()
+        # Train model
         self.fit()
-
-    def split(self):
-        from sklearn.model_selection import train_test_split
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size = self.test_size)
         
     def fit(self):
         self.model.fit(self.X_train, self.y_train)
@@ -110,7 +103,13 @@ class ml():
         '''GINI'''
         return 2*self.auc() - 1
 
-    def general_score(self):
+    def avgprec(self):
+        '''Average Precision Score'''
+        from sklearn.metrics import average_precision_score
+        return np.round(average_precision_score(self.y_test, self.probs()),2)
+
+
+    def scores(self):
         scores = pd.DataFrame({'acuracia':[self.accuracy_score()],
                                   'precision':[self.precision_score()],
                                   'recall':[self.recall_score()],
