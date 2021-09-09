@@ -77,13 +77,17 @@ class AttributeRelevance():
         plt.show()
 
 class Analysis():
+
+    def __init__(self, target_var:str):
+        self.target_var = target_var
+
     def seq_palette(self, n_colors):
         return sns.cubehelix_palette(n_colors, start=.5, rot=-.75, reverse=True)
 
     def group_by_feature(self, feat):
         df = feat.df_lite \
                             .groupby('bin') \
-                            .agg({'label': ['count', 'sum']}) \
+                            .agg({self.target_var: ['count', 'sum']}) \
                             .reset_index()
         df.columns = [feat.feature, 'count', 'good']
         df['bad'] = df['count'] - df['good']
@@ -121,13 +125,14 @@ class StatsSignificance(Analysis):
         print('P-value: %0.2f\nEffect size: %0.2f' % (p_value, cramers_v))
         print('%s is a %s predictor' % (feat.feature.capitalize(), self.interpretation(cramers_v)))
 
-
+# Classe IV herdando tudo da classe Analysis
 class IV(Analysis):
     @staticmethod
     def __perc_share(df, group_name):
         return df[group_name] / df[group_name].sum()
 
     def __calculate_perc_share(self, feat):
+        # Linha alterada pelo vpb para trazer o target_var
         df = self.group_by_feature(feat)
         df['perc_good'] = self.__perc_share(df, 'good')
         df['perc_bad'] = self.__perc_share(df, 'bad')
