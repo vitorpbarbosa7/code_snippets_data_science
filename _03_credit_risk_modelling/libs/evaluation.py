@@ -65,17 +65,16 @@ class Metrics():
         plt.legend()
         plt.show()
         
-    def accuracy_score(self):
-        from sklearn.metrics import accuracy_score
+    def accuracy(self):
         return np.round(accuracy_score(self.y_real, self.model_pred),2)
 
-    def precision_score(self):
+    def precision(self):
         return np.round(precision_score(self.y_real, self.model_pred),2)
 
-    def recall_score(self):
+    def recall(self):
         return np.round(recall_score(self.y_real, self.model_pred),2)
 
-    def f1_score(self):
+    def f1(self):
         return np.round(f1_score(self.y_real, self.model_pred),2)
 
     def auc(self):
@@ -92,10 +91,10 @@ class Metrics():
 
     @property
     def scores(self):
-        scores = pd.DataFrame({'acuracia':[self.accuracy_score()],
-                                  'precision':[self.precision_score()],
-                                  'recall':[self.recall_score()],
-                                  'f1':[self.f1_score()],
+        scores = pd.DataFrame({'accuracy':[self.accuracy()],
+                                  'precision':[self.precision()],
+                                  'recall':[self.recall()],
+                                  'f1':[self.f1()],
                                   'auc':[self.auc()],
                                   'gini':[self.gini()]})
 
