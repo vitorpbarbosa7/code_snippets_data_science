@@ -4,6 +4,9 @@ from sklearn.model_selection import train_test_split
 # from plotnine import *
 # import plotnine as pn 
 from libs.evaluation import Metrics 
+from IPython.core.interactiveshell import InteractiveShell
+InteractiveShell.ast_node_interactivity = "all"
+
 
 class Pipe():
     
@@ -31,6 +34,7 @@ class Pipe():
 
         self.metrics()
 
+        self.overfitting = self.popin.scores - self.oos.scores
     def probs(self):
 
         self.y_pred_train = self.model.predict_proba(self.X_train)[:,1]
@@ -45,6 +49,11 @@ class Pipe():
         self.oos = Metrics(y_real = self.y_test,  
                             model_probs = self.y_pred_test)
 
+        #return self.popin.scores, self.oos.scores
+        #print('popin', self.popin.scores, 
+        #      '\n oos', self.oos.scores, 
+        #      '\n overfitting', self.overfitting)
+
     def split(self):
         
         self.X = self.df.drop(self.target_var, axis = 1)
@@ -55,8 +64,7 @@ class Pipe():
 
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, 
                                                                                 self.y,
-                                                                                test_size = self.test_size,
-                                                                                random_state = 42)
+                                                                                test_size = self.test_size)
     
     def convert_category(self):
         '''
