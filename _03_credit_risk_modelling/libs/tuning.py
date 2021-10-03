@@ -28,7 +28,7 @@ class Tuning():
         maxmin = {
             "recall_overfitting": "minimize",
             "recall": "maximize",
-            "f1_score": "maximize"
+            "f1_score": "maximize"  
         }
         self.direction = maxmin.get(self.chosen_optimization)
 
@@ -43,7 +43,7 @@ class Tuning():
     def objective(self, trial):
         param_grid = {
             #
-            'boosting': trial.suggest_categorical("boosting", ['dart','gbdt','rf']),
+            'boosting': trial.suggest_categorical("boosting", ['dart','rf']),
             "device_type": trial.suggest_categorical("device_type", ['cpu']),
             "colsample_bytree": trial.suggest_float("colsample_bytree", 1.0, 1.5, step = 0.1),
             "n_estimators": trial.suggest_int("n_estimators", 50,200, step = 10),
