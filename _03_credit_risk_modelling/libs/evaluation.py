@@ -20,14 +20,15 @@ class Metrics():
         self.threshold = threshold
         
         self.model_pred = np.where(self.model_probs > self.threshold, 1,0)
+        
+        self.modelname = kwargs.get('modelname',None)
 
-    
     @property
     def charts(self):
         '''
         Plos the metrics charts
         '''
-        self.ks = self.kschart()
+        #self.ks = self.kschart()
         self.pr = self.precisionrecall()
         self.rc = self.roccurve()
         
