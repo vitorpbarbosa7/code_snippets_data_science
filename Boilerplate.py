@@ -1,4 +1,5 @@
 import pandas as pd 
+import pandasql as ps
 import matplotlib.pyplot as plt 
 import numpy as np
 import seaborn as sns
@@ -31,7 +32,6 @@ def fg(w = 6, h = 4, dpi = 120):
     plt.rcParams['figure.dpi'] = dpi
 fg()
 
-# import autotime
-# %load_ext autoreload
-# %autoreload 2
-# %load_ext autotime
+%load_ext autoreload
+%autoreload 2
+
