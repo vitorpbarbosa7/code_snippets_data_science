@@ -88,28 +88,17 @@ class Tuning():
         y_test_pred = np.where(y_test_probs > 0.5 ,1 ,0)
 
         # for optuna optimization
-        self.recall_test = recall(y_test, y_test_pred)
-        self.recall_train = recall(y_train, y_train_pred)
+        recall_test = recall(y_test, y_test_pred)
+        recall_train = recall(y_train, y_train_pred)
 
-        self.train_auc = auc(y_real = y_train, model_probs = y_train_probs)
-        self.test_auc = auc(y_real = y_test, model_probs = y_test_probs)
+        train_auc = auc(y_real = y_train, model_probs = y_train_probs)
+        test_auc = auc(y_real = y_test, model_probs = y_test_probs)
         
-        self.precision_train = precision(y_real = y_test, model_probs = y_test_pred)
+        precision_train = precision(y_real = y_test, model_probs = y_test_pred)
         
-        self.f1_score_test = f1(y_real = y_test, model_probs = y_test_pred)
-
-        #cv_scores[idx] = preds
+        f1_score_test = f1(y_real = y_test, model_probs = y_test_pred)       
         
-        # finance functions
-        tx = 0.05
-        
-        _exp = (0) - y_test_pred*tx*X_test['pay_amt6'] - y_test_pred*X_test['pay_amt6'] -tx*X_test['pay_amt6'] + y_test_pred*X_test['pay_amt6'] 
-        # TN
-        # FP
-        # FN 
-        # TP        
-        
-        return _exp.sum()
+        return test_auc
 
     def split(self, test_size:float=0.3):
     
