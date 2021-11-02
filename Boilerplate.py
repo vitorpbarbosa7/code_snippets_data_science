@@ -32,5 +32,6 @@ def fg(w = 6, h = 4, dpi = 120):
     plt.rcParams['figure.dpi'] = dpi
 fg()
 
+%load_ext autoreload
 %autoreload 2
-%load_ext autotime
+
