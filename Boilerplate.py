@@ -27,7 +27,7 @@ def dp(df, r = 5, c = None):
     with pd.option_context('display.max_rows', 4, 'display.max_columns', None):
         display(df)
 
-def fg(w = 6, h = 4, dpi = 120):
+def fg(w = 10, h = 7, dpi = 200):
     plt.rcParams['figure.figsize'] = (w,h)
     plt.rcParams['figure.dpi'] = dpi
 fg()
