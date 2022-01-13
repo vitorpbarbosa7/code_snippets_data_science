@@ -1,0 +1,31 @@
+﻿ID,Tipo Variável,Grupo,Descrição
+PI0102,Pressão ,Evaporação,Pressão no evaporador
+FC0104,Vazão,Evaporação,Vazão de ácido acético
+FC0105,Vazão,Evaporação,Vazão de vapor
+FC0108,Vazão,Evaporação,Vazão de catalisador
+TI0201,Temperatura,Clivagem,Temperatura na câmara 1
+TC0202,Temperatura,Clivagem,Temperatura na entrada da câmara 2
+TI0203,Temperatura,Clivagem,Temperatura na saídaa da câmara 2
+TI0204,Temperatura,Clivagem,Temperatura na entrada da câmara 3
+TI0205,Temperatura,Clivagem,Temperatura na saída da câmara 1
+TI0210,Temperatura,Clivagem,Temperatura na entrada da serperntina 1
+TI0211,Temperatura,Clivagem,Temperatura na saída da serpentina 1
+TI0212,Temperatura,Clivagem,Temperatura na saída da serpentina 2
+TC0213,Temperatura,Clivagem,Temperatura na saídaa da serpentina 3
+PI0214,Pressão ,Clivagem,Pressão na saída da serpentina 1
+PI0215,Pressão ,Clivagem,Pressão na saída da serpentina 2
+PI0216,Pressão ,Clivagem,Pressão na saída da serpentina 3
+FI0219,Vazão,Clivagem,Vazão de gás residual
+LC0301,Nível,Nível,Nível do tanque
+PI0302,Pressão ,Descartar,Descartar
+FI0446,Vazão,Clivagem,Vazão de gás natural
+FC0501,Vazão,Clivagem,Vazão de amônia
+TC0508,Temperatura,Condensação,Temperatura na saída do trocador 1
+PI0509,Pressão ,Condensação,Pressão no ciclone na saída do trocador 1
+TC0510,Temperatura,Condensação,Temperatura na saída do trocador 1
+PI0511,Pressão ,Condensação,Pressão no ciclone na saída do trocador 2
+TC0512,Temperatura,Condensação,Temperatura na saída do trocador 3
+PI0513,Pressão ,Condensação,Pressão no ciclone na saída do trocador 3
+FC0619,Vazão,Absorção,Vazão de anidrido bruto (produto)
+FC0629,Vazão,Absorção,Vazão de ácido acético
+PI0640,Pressão ,Absorção,Pressão do gás na saída da coluna 4

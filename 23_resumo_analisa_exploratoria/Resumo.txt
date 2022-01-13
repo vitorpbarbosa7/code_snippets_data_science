@@ -1,0 +1,35 @@
+# Checar a estrutura dos dados 
+
+# Checar o shape dos dados 
+
+# Checar se há dados missing, e se houver tratar, antes de fazer correlações 
+
+# Transform nominal variables to binary ones
+
+# Correlation binary and ordinal continuous variables 
+
+# Feature selection 
+
+• head()
+• describe()
+• data_train.isnull().values.any()
+• groupby()
+• distplot
+• kdeplot
+• Matriz de correlação
+• E Boxplot para analisar os Outliers? tá esquecendo né 
+
+
+• dfprevisoes = pd.DataFrame(previsoes)
+• np.unique(previsoes, return_counts=1)
+
+
+• Tratamento de valores missing:	
+ df.isnull().sum(axis = 0)
+
+ •Separação do dataset em quartis (Principalmente para valores contínuos) (em bins, em categorias, muito bom)
+
+ • Posso criar funções para tratar o dataset 
+ • df.sample(5)
+
+ • Padronização do dataset com o preprocessing do sklearn para labels
