@@ -8,6 +8,12 @@ from sklearn.model_selection import cross_validate
 
 from abc import ABC, abstractmethod
 
+# parameters
+_houses = 2
+
+def _round(_value):
+    return np.round(_value,_houses)
+
 class GeneralMetrics(ABC):
     ''' Any metrics'''
     @abstractmethod
@@ -16,19 +22,25 @@ class GeneralMetrics(ABC):
 
 class accuracy(GeneralMetrics):
     def metric(y_real, model_pred):
-        return print(f'{np.round(accuracy_score(y_real, model_pred),2)}')
+        return pd.Series({'accuracy':f'{_round(accuracy_score(y_real, model_pred))}'})
 
 class precision(GeneralMetrics):
     def metric(y_real, model_pred):
-        return print(f'{np.round(precision_score(y_real, model_pred),2)}')
+        return pd.Series({'precision':f'{_round(precision_score(y_real, model_pred))}'})
+
+
 
 class Metrics:
     '''Main'''
     @abstractmethod
     def get_metrics(y_real, model_pred):
-        for metric in GeneralMetrics.__subclasses__():
-            metric.metric(y_real, model_pred)
 
+        return print(pd.concat(metric.metric(y_real, model_pred) for metric in GeneralMetrics.__subclasses__()))
+
+        for metric in GeneralMetrics.__subclasses__():
+            # _dataframe = pd.DataFrame()
+            # _dataframe.append(
+            metric.metric(y_real, model_pred)
 
 if __name__ == '__main__':
 
