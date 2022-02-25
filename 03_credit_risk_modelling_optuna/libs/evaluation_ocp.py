@@ -109,7 +109,7 @@ if __name__ == '__main__':
         
 
 
-#     @property
+#     @property 
 #     def scores(self):
 #         scores = pd.DataFrame({'accuracy':[accuracy()],
 #                                   'precision':[precision()],
