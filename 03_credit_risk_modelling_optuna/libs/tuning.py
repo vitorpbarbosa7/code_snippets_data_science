@@ -9,9 +9,10 @@ import lightgbm as lgbm
 
 class Tuning():
     
-    def __init__(self, df:'pandas.DataFrame', target_var:str,
-                n_trials:int = 10,
-                chosen_optimization:str = 'recall'):
+    def __init__(self, df:'pandas.DataFrame', 
+                 target_var:str,
+                 n_trials:int = 10,
+                 chosen_optimization:str = 'recall'):
         
         '''
         Parameters
@@ -53,33 +54,29 @@ class Tuning():
 
     def objective(self, trial):
         param_grid = {
-            #
-            'boosting': trial.suggest_categorical("boosting", ['dart','rf']),
+            'boosting': trial.suggest_categorical("boosting", ['dart']),
+            'drop_rate': trial.suggest_float('drop_rate', 0.1, 0.5, step = 0.005),
+            'extra_trees': trial.suggest_categorical('extra_trees', [True, False]),
             "device_type": trial.suggest_categorical("device_type", ['cpu']),
             "colsample_bytree": trial.suggest_float("colsample_bytree", 1.0, 1.5, step = 0.1),
             "n_estimators": trial.suggest_int("n_estimators", 50,200, step = 10),
             "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.20, step = 0.01),
             "num_leaves": trial.suggest_int("num_leaves", 5, 40, step=5),
             "max_depth": trial.suggest_int("max_depth", 3, 12),
-            "min_data_in_leaf": trial.suggest_int("min_data_in_leaf", 10, 150, step=10),
+            'ming_gain_to_split': trial.suggest_float('min_gain_to_split', 0.01, 0.1, step = 0.001),
+            "min_data_in_leaf": trial.suggest_int("min_data_in_leaf", 10, 150, step = 10),
             "min_child_weight": trial.suggest_float("min_child_weight", 1e-5, 1e-3, step = 1e-4),
-            "max_bin": trial.suggest_int("max_bin", 100, 400),
             "lambda_l1": trial.suggest_int("lambda_l1", 0, 100, step=5),
             "lambda_l2": trial.suggest_int("lambda_l2", 0, 100, step=5),
-            "min_gain_to_split": trial.suggest_float("min_gain_to_split", 0, 15),
-            "bagging_fraction": trial.suggest_float(
-                "bagging_fraction", 0.2, 0.95, step=0.1
-            ),
-            "bagging_freq": trial.suggest_categorical("bagging_freq", [1]),
-            "feature_fraction": trial.suggest_float(
-                "feature_fraction", 0.2, 0.95, step=0.1
-            ),
+            "bagging_fraction": trial.suggest_float("bagging_fraction", 0.2, 0.7, step=0.1),
+            "bagging_freq": trial.suggest_int("bagging_freq", 1,20, step = 5),
+            "feature_fraction": trial.suggest_float("feature_fraction", 0.2, 0.5, step=0.1),
+            "feature_fraction_bynode": trial.suggest_float("feature_fraction_bynode", 0.4, 0.7, step = 0.05),
+            "pos_bagging_fraction": trial.suggest_float("pos_bagging_fraction", 0.4, 0.7, step = 0.05)
         }
-
-        # split
+        
         X_train, X_test, y_train, y_test = self.split()
 
-        # model fit
         model = lgbm.LGBMClassifier(objective="binary", silent = True, **param_grid)
         model.fit(
             X_train,
@@ -89,10 +86,10 @@ class Tuning():
             early_stopping_rounds=100,
             callbacks=[
                 LightGBMPruningCallback(trial, self.eval_metric)
-            ],  # Add a pruning callback
+            ],
             verbose = False
         )
-        # Metrics
+        
         def recall(y_real, model_pred):
             return np.round(recall_score(y_real,model_pred),2)
 

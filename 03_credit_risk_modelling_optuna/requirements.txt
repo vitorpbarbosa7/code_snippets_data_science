@@ -1,0 +1,13 @@
+pandas
+numpy
+matplotlib
+scipy
+seaborn
+optuna
+lightgbm
+shap
+notebook
+ipython
+statsmodels
+plotly
+pyarrow
