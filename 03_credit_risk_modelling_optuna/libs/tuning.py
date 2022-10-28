@@ -1,9 +1,7 @@
 import numpy as np
 import optuna  # pip install optuna
 from optuna.integration import LightGBMPruningCallback
-from sklearn.metrics import log_loss
-from sklearn.model_selection import StratifiedKFold
-from sklearn.metrics import roc_curve, accuracy_score, recall_score, precision_score, f1_score, roc_auc_score, precision_recall_curve, average_precision_score
+from sklearn.metrics import recall_score, precision_score, f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 import lightgbm as lgbm
 
