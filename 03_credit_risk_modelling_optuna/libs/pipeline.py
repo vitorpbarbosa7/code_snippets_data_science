@@ -1,8 +1,6 @@
 import numpy as np 
 import pandas as pd 
 from sklearn.model_selection import train_test_split
-# from plotnine import *
-# import plotnine as pn 
 from libs.evaluation import Metrics 
 from IPython.core.interactiveshell import InteractiveShell
 InteractiveShell.ast_node_interactivity = "all"

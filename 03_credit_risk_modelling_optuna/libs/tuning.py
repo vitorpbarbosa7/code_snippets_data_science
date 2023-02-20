@@ -75,7 +75,9 @@ class Tuning():
         
         X_train, X_test, y_train, y_test = self.split()
 
-        model = lgbm.LGBMClassifier(objective="binary", silent = True, **param_grid)
+        model = lgbm.LGBMClassifier(objective="binary", 
+                                    silent = True, 
+                                    **param_grid)
         model.fit(
             X_train,
             y_train,

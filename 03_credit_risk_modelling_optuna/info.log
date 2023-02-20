@@ -10,3 +10,5 @@
 2022-10-28 06:55:20,779 - root - INFO - No path argument was provided. Using: None
 2022-10-28 06:55:20,780 - root - WARNING - Kedro extension was registered but couldn't find a Kedro project. Make sure you run `%reload_kedro <path_to_kedro_project>`.
 2022-10-28 06:55:37,317 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+2022-10-28 07:10:58,526 - root - INFO - No path argument was provided. Using: None
+2022-10-28 07:10:58,527 - root - WARNING - Kedro extension was registered but couldn't find a Kedro project. Make sure you run `%reload_kedro <path_to_kedro_project>`.
