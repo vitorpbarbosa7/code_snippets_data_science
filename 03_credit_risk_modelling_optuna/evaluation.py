@@ -25,7 +25,7 @@ df_cuts = pd.DataFrame({'precision':precision[1:],'recall':recall[1:],'threshold
 
 print(df_cuts)
 
-no_skill = len(y_test[y_test ==1]) / len(y_test)
+no_skill = len(y_test[y_test==1]) / len(y_test)
 plt.plot([0,1], [no_skill, no_skill], linestyle = '--', label = 'Classificador base')
 plt.plot(precision, recall, marker = '.')
 plt.xlabel('Recall')

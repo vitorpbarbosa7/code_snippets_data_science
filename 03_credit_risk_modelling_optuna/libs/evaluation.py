@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from sklearn.metrics import roc_curve, accuracy_score, recall_score, precision_score, f1_score, roc_auc_score, precision_recall_curve, average_precision_score
 from sklearn.model_selection import cross_validate 
 
-from libs.confusionmatrix import MatrizConfusao
+from .confusionmatrix import MatrizConfusao
 # from libs.kolgo import KolgomorovSmirnov
 
 class Metrics():
@@ -107,7 +107,6 @@ class Metrics():
         - f1
         - recall
         - precision'''
-        from sklearn.model_selection import cross_validate
         res = cross_validate(self.model, self.X, self.y, cv = cv, 
                                   scoring = ['accuracy','f1','recall','precision'],
                                   return_train_score = True)
@@ -126,6 +125,5 @@ class Metrics():
 
 
     def matriz(self):
-        from libs.confusionmatrix import matriz_confusao as cm
-        cm = cm(self.y_test, self.pred())
+        cm = MatrizConfusao(self.y_test, self.pred())
         return cm

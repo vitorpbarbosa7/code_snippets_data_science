@@ -4,6 +4,9 @@ from optuna.integration import LightGBMPruningCallback
 from sklearn.metrics import recall_score, precision_score, f1_score, roc_auc_score
 from sklearn.model_selection import train_test_split
 import lightgbm as lgbm
+import logging
+
+log = logging.getLogger(__name__)
 
 class Tuning():
     
@@ -73,6 +76,8 @@ class Tuning():
             "pos_bagging_fraction": trial.suggest_float("pos_bagging_fraction", 0.4, 0.7, step = 0.05)
         }
         
+        log.info(f'Eval metric is {self.eval_metric}')
+
         X_train, X_test, y_train, y_test = self.split()
 
         model = lgbm.LGBMClassifier(objective="binary", 
