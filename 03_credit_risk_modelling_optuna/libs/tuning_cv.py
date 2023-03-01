@@ -85,14 +85,14 @@ class Tuning():
 
             # step of this objective function for optuna, in which the param_grids will already be decided by optuna, which one try this time
             eval_metric = 'binary_logloss'
-            pruning_callback = LightGBMPruningCallback(trial, eval_metric)
+            pruning_callback = LightGBMPruningCallback(trial = trial, metric = 'binary_logloss')
             model.fit(
                 X_train,
                 y_train,
                 eval_set=[(X_test, y_test)],
                 # eval_metric=eval_metric,
                 # early_stopping_rounds=100,
-                # callbacks=[pruning_callback],
+                callbacks=[pruning_callback],
                 verbose = False
             )
 
@@ -114,8 +114,8 @@ class Tuning():
             
             print('Calculating optuna final objective metrics')
             print(y_train)
-            self.f1_score_train = f1_score(y_train, y_train_pred)
-            self.f1_score_test = f1_score(y_test, y_test_pred)
+            self.f1_score_train = self.local_f1(y_train, y_train_pred)
+            self.f1_score_test = self.local_f1(y_test, y_test_pred)
 
             train_score = self.f1_score_train
             test_score = self.f1_score_test
@@ -132,25 +132,14 @@ class Tuning():
 
         return final_metric_test
 
-    def recall(y_real, model_pred):
-        return np.round(recall_score(y_real,model_pred),2)
+    def local_recall(self, y_real, model_pred):
+        return recall_score(y_real,model_pred)
 
-    def auc(y_real, model_probs):
-        '''AUC'''
-        return np.round(roc_auc_score(y_real,model_probs),2)
+    def local_auc(self, y_real, model_probs):
+        return roc_auc_score(y_real,model_probs)
 
-    def precision(y_real, model_probs):
-        return np.round(precision_score(y_real,model_probs),2)
+    def local_precision(self, y_real, model_probs):
+        return precision_score(y_real,model_probs)
 
-    def f1(y_real, model_probs):
-        return np.round(f1_score(y_real,model_probs),2)
-
-    def split(self, test_size:float=0.3):
-    
-        X = self.df.drop(self.target_var, axis = 1)
-        y = self.df[self.target_var]
-        X_train, X_test, y_train, y_test = train_test_split(X,
-                                                            y,
-                                                            test_size = test_size,
-                                                            random_state = 42)
-        return X_train, X_test, y_train, y_test
+    def local_f1(self, y_real, model_pred):
+        return f1_score(y_real,model_pred)
