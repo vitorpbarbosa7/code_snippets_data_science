@@ -1,0 +1,3 @@
+optuna_metric:
+  wasserstein: wasserstein
+  average_precision: average_precision

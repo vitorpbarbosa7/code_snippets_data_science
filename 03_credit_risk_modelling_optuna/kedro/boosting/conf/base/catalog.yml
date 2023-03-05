@@ -1,0 +1,49 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://kedro.readthedocs.io/en/stable/data/data_catalog.html
+
+
+input_data:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/uci_credit_card.csv
+
+data_input_model:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/data_input_model.parquet
+
+df_train:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/df_train.parquet
+
+df_test:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/df_test.parquet
+
+optuna_study:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/optuna_study.pickle
+
+bestparams:
+  type: json.JSONDataSet
+  filepath: data/06_models/bestparams.json
+
+model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/model.pickle
+
+y_hat:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/y_hat.parquet
+
+y_test:
+  type: pandas.ParquetDataSet
+  filepath: data/05_model_input/y_test.parquet
+
+scores:
+  type: pandas.CSVDataSet
+  filepath: data/06_models/scores.csv
+
+fig:
+  type: matplotlib.MatplotlibWriter
+  filepath: data/06_models/fig.png
