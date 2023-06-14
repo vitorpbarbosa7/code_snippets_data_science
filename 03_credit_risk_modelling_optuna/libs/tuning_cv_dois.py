@@ -35,15 +35,15 @@ class Tuning():
 
         param_grid = {
         'boosting': trial.suggest_categorical("boosting", ['dart']),
-        "n_estimators": trial.suggest_int("n_estimators", 50,200, step = 10),
-        "learning_rate": trial.suggest_float("learning_rate", 0.01, 0.20, step = 0.01),
-        "max_depth": trial.suggest_int("max_depth", 3, 8),
-        "num_leaves": trial.suggest_int("num_leaves", 5, 40, step=5),
-        "lambda_l1": trial.suggest_int("lambda_l1", 0, 100, step=5),
-        "lambda_l2": trial.suggest_int("lambda_l2", 0, 100, step=5),
-        "bagging_fraction": trial.suggest_float("bagging_fraction", 0.2, 0.7, step=0.1),
-        "bagging_freq": trial.suggest_int("bagging_freq", 1,20, step = 5),
-        "feature_fraction": trial.suggest_float("feature_fraction", 0.2, 0.5, step=0.1)
+#         "n_estimators": trial.suggest_int("n_estimators", 50,200, step = 10),
+        "learning_rate": trial.suggest_loguniform("learning_rate", 0.01, 0.1),
+#         "max_depth": trial.suggest_int("max_depth", 3, 8),
+#         "num_leaves": trial.suggest_int("num_leaves", 5, 40, step=5),
+#         "lambda_l1": trial.suggest_int("lambda_l1", 0, 100, step=5),
+#         "lambda_l2": trial.suggest_int("lambda_l2", 0, 100, step=5),
+#         "bagging_fraction": trial.suggest_float("bagging_fraction", 0.2, 0.7, step=0.1),
+#         "bagging_freq": trial.suggest_int("bagging_freq", 1,20, step = 5),
+#         "feature_fraction": trial.suggest_float("feature_fraction", 0.2, 0.5, step=0.1)
         }
 
         cv = StratifiedKFold(n_splits=2, shuffle=True, random_state=7)
